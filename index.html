@@ -11,8 +11,7 @@
 </head>
 <body>
 
-  <br><br>
-  <br><br>
+  
 	<div class="contenedor" id="contenedorPantalla">
 	    <select name="dispositivosDeAudio" id="dispositivosDeAudio" hidden></select>
         <select name="dispositivosDeVideo" id="dispositivosDeVideo" hidden></select>
@@ -30,7 +29,7 @@
     Tomar Foto
   </button>
     &nbsp;&nbsp;
-  <button id="btn-back" class="miBtn btnHover">Cámara Trasera</button>
+  <button id="btn-front" class="miBtn btnHover">Cámara Frontal</button>
     &nbsp;&nbsp;
     <button id="btnComenzarGrabacion" class="btnGrabar btnHover mb-3" style="background-color:#138496 !important;">
         <i class="zmdi zmdi-videocam zmdi-hc-lg" style="color: #333;"></i> 
@@ -48,26 +47,11 @@
 
 
 <script  src="https://code.jquery.com/jquery-2.2.4.js"  integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
-<script src="./script-video-foto/VideoFront.js"></script> 
-<script src="./script-video-foto/CamaraFront.js"></script>
+<script src="./script-video-foto/VideoTras.js"></script> 
+<script src="./script-video-foto/CamaraTras.js"></script>
 
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/html2canvas@1.0.0-rc.1/dist/html2canvas.min.js"></script>
 <script>
-
-  // Solicita acceso a la cámara
-navigator.mediaDevices.getUserMedia({
-  video: true,
-}).then((stream) => {
-  // Obtiene el elemento <video>
-  const video = document.querySelector("video");
-
-  // Asigna el flujo de video al elemento <video>
-  video.srcObject = stream;
-
-  // Inicia la reproducción del video
-  video.play();
-});
-
   const $boto = document.querySelector("#btnCapturar"), // El botón que desencadena
         $statu = document.querySelector("#estado"),
         $objetivo   = document.querySelector("#contenedorPantalla"); // A qué le tomamos la foto
@@ -93,16 +77,18 @@ const enviarCapturaAServidor = canvas => {
       return resultado.text()
     })
     .then(nombreDeLaFoto => {
-      console.log({ nombreDeLaFoto });
-      alert(`Guardada como ${nombreDeLaFoto}`);      
+      //console.log({ nombreDeLaFoto });
+      //alert(`Guardada como ${nombreDeLaFoto}`);
+      location.href = `static/enviarFile.php?foto=${nombreDeLaFoto}`;
+      
     });
 };
 
 
 
-//Trabajando con la camara Frontal & Trasera
-$("#btn-back").click(function(){
-         location.href = `camaraTrasera.html`;
+//Trabajando con la camara Fron & Tras
+$("#btn-front").click(function(){
+         location.href = `./`;
  });
 </script>
 
