@@ -52,6 +52,21 @@
 
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/html2canvas@1.0.0-rc.1/dist/html2canvas.min.js"></script>
 <script>
+
+    // Solicita acceso a la cámara
+navigator.mediaDevices.getUserMedia({
+  video: true,
+}).then((stream) => {
+  // Obtiene el elemento <video>
+  const video = document.querySelector("video");
+
+  // Asigna el flujo de video al elemento <video>
+  video.srcObject = stream;
+
+  // Inicia la reproducción del video
+  video.play();
+});
+
   const $boto = document.querySelector("#btnCapturar"), // El botón que desencadena
         $statu = document.querySelector("#estado"),
         $objetivo   = document.querySelector("#contenedorPantalla"); // A qué le tomamos la foto
