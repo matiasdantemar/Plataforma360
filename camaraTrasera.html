@@ -24,6 +24,13 @@
 	</div>
 
 <div id="contBtns">
+  <button id="boton" class="miBtn btnHover mb-3">
+    <i class="zmdi zmdi-camera-party-mode" style="color: #333;"></i> 
+    Tomar Foto
+  </button>
+    &nbsp;&nbsp;
+  <button id="btn-front" class="miBtn btnHover">Cámara Frontal</button>
+    &nbsp;&nbsp;
     <button id="btnComenzarGrabacion" class="btnGrabar btnHover mb-3" style="background-color:#138496 !important;">
         <i class="zmdi zmdi-videocam zmdi-hc-lg" style="color: #333;"></i> 
         Grabar vídeo 
@@ -46,7 +53,8 @@
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/html2canvas@1.0.0-rc.1/dist/html2canvas.min.js"></script>
 <script>
 
-    // Solicita acceso a la cámara
+
+      // Solicita acceso a la cámara
 navigator.mediaDevices.getUserMedia({
   video: true,
 }).then((stream) => {
@@ -59,6 +67,7 @@ navigator.mediaDevices.getUserMedia({
   // Inicia la reproducción del video
   video.play();
 });
+
 
   const $boto = document.querySelector("#btnCapturar"), // El botón que desencadena
         $statu = document.querySelector("#estado"),
