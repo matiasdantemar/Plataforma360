@@ -46,15 +46,15 @@
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/html2canvas@1.0.0-rc.1/dist/html2canvas.min.js"></script>
 <script>
   
-const constraints = {
+  const constraints = {
   video: {
     facingMode: "environment" // Esta línea selecciona la cámara trasera
   }
 };
 
-    // Solicita acceso a la cámara
 navigator.mediaDevices.getUserMedia({
   video: true,
+  constraints,
 }).then((stream) => {
   // Obtiene el elemento <video>
   const video = document.querySelector("video");
